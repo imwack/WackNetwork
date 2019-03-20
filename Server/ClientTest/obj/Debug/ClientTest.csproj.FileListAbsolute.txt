@@ -1,0 +1,7 @@
+F:\C#Proj\Server\Server\ClientTest\bin\Debug\ClientTest.exe.config
+F:\C#Proj\Server\Server\ClientTest\bin\Debug\ClientTest.exe
+F:\C#Proj\Server\Server\ClientTest\bin\Debug\ClientTest.pdb
+F:\C#Proj\Server\Server\ClientTest\obj\Debug\ClientTest.csprojAssemblyReference.cache
+F:\C#Proj\Server\Server\ClientTest\obj\Debug\ClientTest.csproj.CoreCompileInputs.cache
+F:\C#Proj\Server\Server\ClientTest\obj\Debug\ClientTest.exe
+F:\C#Proj\Server\Server\ClientTest\obj\Debug\ClientTest.pdb
