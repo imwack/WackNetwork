@@ -43,11 +43,12 @@
   <ItemGroup>
     <Compile Include="ClientNetwork.cs" />
     <Compile Include="Connection.cs" />
-    <Compile Include="ConnectionBuffer.cs" />
     <Compile Include="INetwork.cs" />
     <Compile Include="Message.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ServerNetwork.cs" />
+    <Compile Include="SKBuffer.cs" />
+    <Compile Include="Util\Converter.cs" />
     <Compile Include="Util\Logger.cs" />
     <Compile Include="Util\SwapContainer.cs" />
   </ItemGroup>

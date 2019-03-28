@@ -14,11 +14,14 @@ namespace Server
     {
         private int currentConnectionId = 1;
         private int minConnectionId = 1;
-        private int maxConnectionId = int.MaxValue;
+        private int maxConnectionId = int.MaxValue - 1;
         private Socket listenSocket;
 
+        //connected Client
         private readonly Dictionary<int, Connection> clientDict = new Dictionary<int, Connection>();
+        //wait Client
         private readonly SwapContainer<Queue<Connection>> waitClientQueue = new SwapContainer<Queue<Connection>>();
+        //wait close Client
         private readonly SwapContainer<Queue<Connection>> closeClientQueue = new SwapContainer<Queue<Connection>>();
 
         public delegate void ServerNetworkClientConnectedHandler(IRemote remote);
@@ -35,13 +38,11 @@ namespace Server
             listenSocket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp); //current only tcp
             listenSocket.Bind(new IPEndPoint(IPAddress.Any, port));
             listenSocket.Listen(10);
-        }
-        public void BeginAccept()
-        {
             listenSocket.BeginAccept(OnAcceptCallback, null);
         }
 
-        //on client be accepted
+
+        //on client connect
         private void OnAcceptCallback(IAsyncResult ar)
         {
             try
@@ -51,7 +52,8 @@ namespace Server
                 clientSocket.ReceiveTimeout = 500;
                 clientSocket.NoDelay = true;
 
-                var id = GetConnectId();
+                //alloc connect id
+                var id = GetConnectionId();
                 if (id != -1)
                 {
                     var clientConnection = new Connection(clientSocket, id);
@@ -61,7 +63,7 @@ namespace Server
                     }
                     Logger.Info("OnAcceptCallback add wait client id={0}", id);
                 }
-                // continue to accept
+                //keep on listen
                 listenSocket.BeginAccept(OnAcceptCallback, null);
             }
             catch (Exception exception)
@@ -70,7 +72,7 @@ namespace Server
             }
         }
 
-        private int GetConnectId()
+        private int GetConnectionId()
         {
             int id = currentConnectionId;
             if (currentConnectionId + 1 > maxConnectionId)
@@ -92,8 +94,7 @@ namespace Server
         {
             try
             {
-                // todo heartbeat
-
+                CheckHeartBeat();
                 ProcessClientConnectMessageQueue();
                 RefreshClientList();
             }
@@ -107,6 +108,11 @@ namespace Server
         {
             listenSocket?.Close();
             Logger.Debug("ServerSocket.Dispose");
+        }
+
+        private void CheckHeartBeat()
+        {
+            // todo heartbeat
         }
 
         private void ProcessClientConnectMessageQueue()
@@ -126,26 +132,22 @@ namespace Server
             if (waitClientQueue.Out.Count == 0)
             {
                 waitClientQueue.Swap();
-
                 foreach (var clientConnection in waitClientQueue.Out)
                 {
-                    // todo race condition, when add conn to clientConnectorsDict
                     if (clientDict.ContainsKey(clientConnection.connectionId))
                     {
-                        Logger.Warn("ServerNetwork.RefreshClientList connector exist id={0}", clientConnection.connectionId);
+                        Logger.Error("ServerNetwork.RefreshClientList connector exist id={0}", clientConnection.connectionId);
                         return;
                     }
 
                     clientDict.Add(clientConnection.connectionId, clientConnection);
                     OnClientConnected?.Invoke(clientConnection);
-
-                    // client.sysSocket.BeginReceive
                     clientConnection.BeginReceive();
                 }
                 waitClientQueue.Out.Clear();
             }
 
-            // remove client connection
+            // close client connection
             if (closeClientQueue.Out.Count == 0)
             {
                 closeClientQueue.Swap();
@@ -166,7 +168,7 @@ namespace Server
                 client.Send();
                 if (client.DefferedClose)
                 {
-                    // close any clients which failed sending data
+                    // close client deffered close
                     CloseClient(client, NetworkCloseMode.DefferedClose);
                 }
             }
