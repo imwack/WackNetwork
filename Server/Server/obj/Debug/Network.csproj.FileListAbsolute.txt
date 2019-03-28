@@ -4,3 +4,8 @@ F:\C#Proj\Server\Server\Server\obj\Debug\Network.csprojAssemblyReference.cache
 F:\C#Proj\Server\Server\Server\obj\Debug\Network.csproj.CoreCompileInputs.cache
 F:\C#Proj\Server\Server\Server\obj\Debug\Server.dll
 F:\C#Proj\Server\Server\Server\obj\Debug\Server.pdb
+F:\C#Proj\Git\WackNetwork\Server\Server\bin\Debug\Server.dll
+F:\C#Proj\Git\WackNetwork\Server\Server\bin\Debug\Server.pdb
+F:\C#Proj\Git\WackNetwork\Server\Server\obj\Debug\Network.csproj.CoreCompileInputs.cache
+F:\C#Proj\Git\WackNetwork\Server\Server\obj\Debug\Server.dll
+F:\C#Proj\Git\WackNetwork\Server\Server\obj\Debug\Server.pdb

@@ -104,7 +104,7 @@ namespace Server
             }
         }
 
-        public int Push(byte[] buffer, int len, int offset)
+        public int Push(byte[] buffer, int len, int offset = 0)
         {
             if (!Connected)
             {

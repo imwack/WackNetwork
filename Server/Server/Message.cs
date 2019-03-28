@@ -8,7 +8,7 @@ namespace Server
 {
     public class Message
     {
-        public byte[] Buffer = null;
+        private byte[] Buffer = null;
         public Message(byte[] buf)
         {
             Buffer = buf;

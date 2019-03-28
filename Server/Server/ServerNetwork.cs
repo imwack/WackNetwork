@@ -97,6 +97,7 @@ namespace Server
                 CheckHeartBeat();
                 ProcessClientConnectMessageQueue();
                 RefreshClientList();
+                Thread.Sleep(10);
             }
             catch (Exception e)
             {

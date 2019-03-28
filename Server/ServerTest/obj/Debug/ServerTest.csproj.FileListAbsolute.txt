@@ -5,3 +5,13 @@ F:\C#Proj\Server\Server\ServerTest\obj\Debug\ServerTest.csprojAssemblyReference.
 F:\C#Proj\Server\Server\ServerTest\obj\Debug\ServerTest.csproj.CoreCompileInputs.cache
 F:\C#Proj\Server\Server\ServerTest\obj\Debug\ServerTest.exe
 F:\C#Proj\Server\Server\ServerTest\obj\Debug\ServerTest.pdb
+F:\C#Proj\Git\WackNetwork\Server\ServerTest\bin\Debug\ServerTest.exe.config
+F:\C#Proj\Git\WackNetwork\Server\ServerTest\bin\Debug\ServerTest.exe
+F:\C#Proj\Git\WackNetwork\Server\ServerTest\bin\Debug\ServerTest.pdb
+F:\C#Proj\Git\WackNetwork\Server\ServerTest\bin\Debug\Server.dll
+F:\C#Proj\Git\WackNetwork\Server\ServerTest\bin\Debug\Server.pdb
+F:\C#Proj\Git\WackNetwork\Server\ServerTest\obj\Debug\ServerTest.csprojAssemblyReference.cache
+F:\C#Proj\Git\WackNetwork\Server\ServerTest\obj\Debug\ServerTest.csproj.CoreCompileInputs.cache
+F:\C#Proj\Git\WackNetwork\Server\ServerTest\obj\Debug\ServerTest.csproj.CopyComplete
+F:\C#Proj\Git\WackNetwork\Server\ServerTest\obj\Debug\ServerTest.exe
+F:\C#Proj\Git\WackNetwork\Server\ServerTest\obj\Debug\ServerTest.pdb
